@@ -57,7 +57,8 @@ $ go-getter Gofile
 ````
 
 This will ensure that your packages are installed in the correct place in your
-`GOPATH`. Run it repeatedly.
+`GOPATH`. You can run it repeatedly and it will ensure packages are always at
+your desired version.
 
 
 FAQ
