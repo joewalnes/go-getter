@@ -1,0 +1,98 @@
+go-getter: Like "go get", but different
+=======================================
+
+A very small shell script that fetches Go packages pinned to your preferred
+version.
+
+For creating consistent and repeatable builds.
+
+
+Background
+----------
+
+If you program [Go](https://golang.org/) you are no doubt familiar with its
+package manager `go get`.
+
+Like everything about Go, it's fantastically opinionated: you depend on the
+HEAD version of a package and it's the package author's responsibility to
+ensure HEAD *always* contains a good version and maintains backwards
+compatibility.
+
+In a perfect world, that's great. *Except it's not always the case.* Libraries
+evolve, behaviors change, APIs evolve, regressions come and go, performance
+fluctuates, bad things sometimes appear in HEAD, even if only for a short period
+of time.
+
+`go-getter` is an alternative to `go get` that has a stronger opinion: **Given
+an identical source tree, building a project tomorrow should give you the same
+result as building it today, and yesterday, and in 2 years time.**
+
+Because it sucks when you need to cut an emergency release and the code no
+longer compiles due to something out of your control.
+
+
+Installation
+------------
+
+Grab `go-getter`. It's a very shell script. Don't forget to `chmod +x`.
+
+
+Usage
+-----
+
+Create a file to declare your package dependencies and git has versions.
+I call my file `Gofile` but you can call it anything.
+
+````
+# List packages and git hashes of versions you want
+
+github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
+github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86
+github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44
+````
+
+Then run:
+````bash
+$ go-getter Gofile
+````
+
+This will ensure that your packages are installed in the correct place in your
+`GOPATH`. Run it repeatedly.
+
+
+FAQ
+---
+
+#### Why should I agree with your opinion over that of the Go team?
+
+We both have opinions. They're both right. I can't choose for you.
+
+#### You know there are loads of these out there already, right?
+
+Yep, I tried a few. Some of them were written in Go, which lead to a
+bootstrapping issue (you had to go get them, but which version were you
+getting?). Others were too complicated or confusing for me. I just want
+to download dependencies.
+
+#### Are you crazy? This is just a lame 15 line shell script - I could write that
+
+Me too. That's why I did.
+
+#### How does this handle transitive dependencies (ie. deps of deps)?
+
+It doesn't. By design. If you depend libraries that depend on other libraries,
+you must explicitly list them, that way you can state the versions of those
+libraries too.
+
+#### How do I find the current version of a hash for the package I want to use?
+
+View the latest commit on GitHub. You'll see it there.
+
+#### Do you accept pull requests?
+
+Probably not. Your best bet is to fork it and publicize your better version.
+
+#### Is this available in brew, apt, yum, etc?
+
+No. It's a teeny tiny shell script. Just check it in to your project and run
+it from there.

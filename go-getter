@@ -1,0 +1,16 @@
+#!/bin/bash
+# Like 'go get' but with pinned package versions. https://github.com/joewalnes/go-getter
+set -e
+: ${GOPATH?"GOPATH not set"}
+: ${1?"Usage: $0 [path-to-go-deps]"}
+sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
+  echo "$PKG ($HASH)"
+  DEST=$GOPATH/src/$PKG
+  mkdir -p $DEST
+  if [ -d $DEST/.git ]; then
+    (cd $DEST && git pull -q origin master)
+  else
+    git clone -q https://$PKG.git $DEST
+  fi
+  (cd $DEST && git checkout -q $HASH)
+done
