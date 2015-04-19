@@ -20,6 +20,8 @@ github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44
 $ go-getter Gofile
 ````
 
+Uhh that's it.
+
 Background
 ----------
 
@@ -47,7 +49,7 @@ longer compiles due to something out of your control.
 Installation
 ------------
 
-Grab `go-getter`. It's a very shell script. Don't forget to `chmod +x`.
+Grab [go-getter](https://raw.githubusercontent.com/joewalnes/go-getter/master/go-getter). It's a very shell script. Don't forget to `chmod +x`.
 
 
 Usage
