@@ -121,6 +121,13 @@ repositories being deleted. But it's also annoying because you have to check
 all the code into your own repo. This is a pragmatic middle ground that gives
 you most of the advantages of vendoring, without repository bloat.
 
+#### How do I use this if I'm a library author?
+
+You don't. It's for top-level (main) programs only.
+
+#### What if you have multiple top level programs that require different package versions?
+
+Use different `GOPATH`s. I typically have one GOPATH per main project.
 
 Architectural diagram
 ---------------------
