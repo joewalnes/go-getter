@@ -10,7 +10,7 @@ For creating consistent and repeatable builds.
 5 second tutorial
 -----------------
 
-To install specicif git revisions of Go packages into your `GOPATH`:
+To install specific git revisions of Go packages into your `GOPATH`:
 ````
 $ cat Gofile
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
