@@ -49,7 +49,7 @@ longer compiles due to something out of your control.
 Installation
 ------------
 
-Grab [go-getter](https://raw.githubusercontent.com/joewalnes/go-getter/master/go-getter). It's a very shell script. Don't forget to `chmod +x`.
+Grab [go-getter](https://raw.githubusercontent.com/joewalnes/go-getter/master/go-getter). It's a very small shell script. Don't forget to `chmod +x`.
 
 
 Usage
