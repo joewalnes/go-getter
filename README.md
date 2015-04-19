@@ -7,6 +7,19 @@ version.
 For creating consistent and repeatable builds.
 
 
+5 second tutorial
+-----------------
+
+To install specicif git revisions of Go packages into your `GOPATH`:
+````
+$ cat Gofile
+github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
+github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86
+github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44
+
+$ go-getter Gofile
+````
+
 Background
 ----------
 
