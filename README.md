@@ -96,3 +96,19 @@ Probably not. Your best bet is to fork it and publicize your better version.
 
 No. It's a teeny tiny shell script. Just check it in to your project and run
 it from there.
+
+#### I read somewhere that a better way to do this is 'vendoring'?
+
+That basically means taking a snapshot of the code and including it in your
+own repository. Yes, it's even better as you are isolated from remote
+repositories being deleted. But it's also annoying because you have to check
+all the code into your own repo. This is a pragmatic middle ground that gives
+you most of the advantages of vendoring, without repository bloat.
+
+
+Architectural diagram
+---------------------
+
+I love gophers too.
+
+![Gophers ready!](http://i.imgur.com/MmNPB.gif "Gophers ready!")
