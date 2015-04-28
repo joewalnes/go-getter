@@ -57,11 +57,11 @@ Grab [go-getter](https://raw.githubusercontent.com/joewalnes/go-getter/master/go
 Usage
 -----
 
-Create a file to declare your package dependencies and git has versions.
+Create a file to declare your package dependencies, git hash versions and the VCS:TRANSPORT to use.
 I call my file `Gofile` but you can call it anything.
 
 ````
-# List packages and git hashes of versions you want
+# List packages, git hashes of versions you want and the VCS:TRANSPORT
 
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb         git:ssh
 github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86         git
