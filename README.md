@@ -15,7 +15,8 @@ To install specific git revisions of Go packages into your `GOPATH`:
 $ cat Gofile
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb         git:ssh
 github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86         git
-github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44         hg:http
+github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44         git:http
+bitbucket.org/someuser/somerepo        12-dfjkjddfddf                                   hg:ssh
 
 $ go-getter Gofile
 ````
@@ -62,9 +63,10 @@ I call my file `Gofile` but you can call it anything.
 ````
 # List packages and git hashes of versions you want
 
-github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
-github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86
-github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44
+github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb         git:ssh
+github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86         git
+github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44         git:http
+bitbucket.org/someuser/somerepo        12-dfjkjddfddf                                   hg:ssh
 ````
 
 Then run:
