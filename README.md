@@ -16,8 +16,8 @@ $ cat Gofile
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb         git:ssh
 github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86         git
 github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44         git:http
-bitbucket.org/someuser/somerepo        12-dfjkjddfddf                                   hg:ssh
-
+bitbucket.org/cranej/go-mvc            7:65b80632192a                                   hg:https
+bitbucket.org/binet/go-ctypes          4:0344428b46d0                                   hg:ssh
 $ go-getter Gofile
 ````
 The third field is the VCS:TRANSPORT. The default VCS is git and the default TRANSPORT is https. Any of the 2 missing fields will default to them.
@@ -66,7 +66,8 @@ I call my file `Gofile` but you can call it anything.
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb         git:ssh
 github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86         git
 github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44         git:http
-bitbucket.org/someuser/somerepo        12-dfjkjddfddf                                   hg:ssh
+bitbucket.org/cranej/go-mvc            7:65b80632192a                                   hg:https
+bitbucket.org/binet/go-ctypes          4:0344428b46d0                                   hg:ssh
 ````
 
 Then run:
