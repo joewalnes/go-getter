@@ -3,14 +3,24 @@
 set -e
 : ${GOPATH?"GOPATH not set"}
 : ${1?"Usage: $0 [path-to-go-deps]"}
-sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
-  echo "$PKG ($HASH)"
+DEFAULT_VCS=git
+DEFAULT_TRANSPORT=https
+sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH VCS_TRANSPORT; do
+  VCS=`echo $VCS_TRANSPORT | awk -F':' '{print $1}'`
+  TRANSPORT=`echo $VCS_TRANSPORT | awk -F':' '{print $2}'`
+  PREFIX=""
+  if [ -z "$VCS" ]; then VCS=$DEFAULT_VCS; fi
+  if [ -z "$TRANSPORT" ]; then TRANSPORT=$DEFAULT_TRANSPORT; fi
+  if [ $TRANSPORT == "ssh" ]; then PREFIX="$VCS@"; fi
+  echo "$PKG ($HASH) - $VCS using $TRANSPORT protocol"
   DEST=$GOPATH/src/$PKG
   mkdir -p $DEST
-  if [ -d $DEST/.git ]; then
-    (cd $DEST && git pull -q origin master)
+  if [ -d "$DEST/.$VCS" ]; then
+    cd $DEST
+    if [ $VCS == "git" ]; then git pull -q origin master; else hg pull -q -u; fi
   else
-    git clone -q https://$PKG.git $DEST
+    if [ $VCS == "git" ]; then git clone -q $TRANSPORT://$PREFIX$PKG.git $DEST; else hg clone -q $TRANSPORT://$PREFIX$PKG $DEST; fi 
   fi
-  (cd $DEST && git checkout -q $HASH)
+  cd $DEST
+  if [ $VCS == "git" ]; then git checkout -q $HASH; else hg update -q -c $HASH; fi
 done
