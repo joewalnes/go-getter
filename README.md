@@ -13,12 +13,13 @@ For creating consistent and repeatable builds.
 To install specific git revisions of Go packages into your `GOPATH`:
 ````
 $ cat Gofile
-github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
-github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86
-github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44
+github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb         git:ssh
+github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86         git
+github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44         hg:http
 
 $ go-getter Gofile
 ````
+The third field is the VCS:TRANSPORT. The default VCS is git and the default TRANSPORT is https. Any of the 2 missing fields will default to them.
 
 Uhh that's it.
 
@@ -90,7 +91,7 @@ bootstrapping issue (you had to go get them, but which version were you
 getting?). Others were too complicated or confusing for me. I just want
 to download dependencies.
 
-#### Are you crazy? This is just a lame 15 line shell script - I could write that
+#### Are you crazy? This is just a lame 26 line shell script - I could write that
 
 Me too. That's why I did.
 
