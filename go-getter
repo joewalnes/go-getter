@@ -17,6 +17,8 @@ sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
       bzr update -q -r $HASH
     elif [ -d "$DEST/.svn" ]; then
       svn update -q -r $HASH
+    else
+      echo "WARNING: Unrecognized VCS system at $DEST"
     fi
   fi
 done
