@@ -7,18 +7,31 @@ sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
   echo "$PKG ($HASH)"
   DEST=$GOPATH/src/$PKG
   go get -d -u $PKG || true
-  if [ -d $DEST ]; then
+  FOUND_VCS=0
+  while [[ "$DEST" != "$GOPATH/src" ]] && [[ -d $DEST ]]
+  do
     cd $DEST
     if [ -d "$DEST/.git" ]; then
+      FOUND_VCS=1
       git checkout -q $HASH
+      break
     elif [ -d "$DEST/.hg" ]; then
+      FOUND_VCS=1
       hg update -q -c $HASH
+      break
     elif [ -d "$DEST/.bzr" ]; then
+      FOUND_VCS=1
       bzr update -q -r $HASH
+      break
     elif [ -d "$DEST/.svn" ]; then
+      FOUND_VCS=1
       svn update -q -r $HASH
+      break
     else
-      echo "WARNING: Unrecognized VCS system at $DEST"
+      DEST="$(readlink -f $DEST/..)"
     fi
+  done
+  if [ $FOUND_VCS -eq 0 ]; then
+    echo "WARNING: Unrecognized VCS system for the golang package $PKG"
   fi
 done
