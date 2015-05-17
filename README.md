@@ -95,7 +95,7 @@ bootstrapping issue (you had to go get them, but which version were you
 getting?). Others were too complicated or confusing for me. I just want
 to download dependencies.
 
-#### Are you crazy? This is just a lame 22 line shell script - I could write that
+#### Are you crazy? This is just a lame 37 line shell script - I could write that
 
 Me too. That's why I did.
 
