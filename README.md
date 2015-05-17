@@ -134,6 +134,10 @@ You don't. It's for top-level (main) programs only.
 
 Use different `GOPATH`s. I typically have one GOPATH per main project.
 
+#### Who did this?
+
+Initially @joewalnes. Then @sriniprash made it work properly.
+
 Architectural diagram
 ---------------------
 
