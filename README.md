@@ -11,7 +11,7 @@ For creating consistent and repeatable builds.
 -----------------
 
 To install specific git revisions of Go packages into your `GOPATH`:
-````
+```
 $ cat Gofile
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
 github.com/julienschmidt/httprouter    b59a38004596b696aca7aa2adccfa68760864d86
@@ -21,7 +21,7 @@ bitbucket.org/binet/go-ctypes          4:0344428b46d0
 launchpad.net/mgo					   1
 
 $ go-getter Gofile
-````
+```
 
 Uhh that's it.
 
@@ -61,7 +61,7 @@ Usage
 Create a file to declare your package dependencies and git/svn/hg/bzr hash versions.
 I call my file `Gofile` but you can call it anything.
 
-````
+```
 # List packages and git hashes of versions you want
 
 github.com/lib/pq                      8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb
@@ -70,11 +70,12 @@ github.com/hashicorp/golang-lru        d85392d6bc30546d352f52f2632814cde4201d44
 bitbucket.org/cranej/go-mvc            7:65b80632192a
 bitbucket.org/binet/go-ctypes          4:0344428b46d0
 launchpad.net/mgo					   1
+```
 
 Then run:
-````bash
+```
 $ go-getter Gofile
-````
+```
 
 This will ensure that your packages are installed in the correct place in your
 `GOPATH`. You can run it repeatedly and it will ensure packages are always at
