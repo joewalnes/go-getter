@@ -4,7 +4,7 @@ set -e
 : ${GOPATH?"GOPATH not set"}
 : ${1?"Usage: $0 [path-to-go-deps]"}
 sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
-  echo "$PKG ($HASH)"
+  echo "$PKG ($HASH)" >&2
   DEST=$GOPATH/src/$PKG
   go get -d -u $PKG || true
   FOUND_VCS=0
@@ -32,6 +32,6 @@ sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
     fi
   done
   if [ $FOUND_VCS -eq 0 ]; then
-    echo "WARNING: Unrecognized VCS system for the golang package $PKG"
+    echo "WARNING: Unrecognized VCS system for the golang package $PKG" >&2
   fi
 done
