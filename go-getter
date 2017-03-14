@@ -1,6 +1,6 @@
 #!/bin/bash
 # Like 'go get' but with pinned package versions. https://github.com/joewalnes/go-getter
-set -e
+set -eu
 : ${GOPATH?"GOPATH not set"}
 : ${1?"Usage: $0 [path-to-go-deps]"}
 sed -e 's/#.*//' $1 | grep -v -e '^[[:space:]]*$' | while read PKG HASH; do
